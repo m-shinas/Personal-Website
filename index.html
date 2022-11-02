@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohammed Shinas</title>
     <link rel="icon" href="SHINAS.jpg" type="image/gif" sizes="16x16">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   </head>
@@ -178,30 +179,30 @@
         <h1 class="text-center">Contact me</h1>
         <div class="row">
           <div class="col-md-12">
-            <form>
+            <form id="submit-form" action="">
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="inputEmail4">Name</label>
-                  <input type="text" class="form-control" id="inputEmail4" placeholder="Name">
+                  <input type="text" class="form-control" id="inputEmail4" name="name" placeholder="Name">
                 </div>
                 <div class="form-group col-md-6">
                   <label for="inputEmail4">Place</label>
-                  <input type="text" class="form-control" id="inputEmail4" placeholder="Place">
+                  <input type="text" class="form-control" id="inputEmail4" name="place" placeholder="Place">
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="inputEmail4">Email</label>
-                  <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                  <input type="email" class="form-control" id="inputEmail4" name="email" placeholder="Email">
                 </div>
                 <div class="form-group col-md-6">
                   <label for="inputEmail4">Mobile</label>
-                  <input type="tel" class="form-control" id="inputEmail4" placeholder="Mobile">
+                  <input type="tel" class="form-control" id="inputEmail4" name="mobile" placeholder="Mobile">
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputAddress">Message</label>
-                <textarea class="form-control" cols="30" rows="10" placeholder="Type your message here.."></textarea>
+                <textarea class="form-control" cols="30" rows="10" name="message" placeholder="Type your message here.."></textarea>
               </div>
               
               <br>
@@ -230,8 +231,25 @@
       </div>
     </footer>
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-    
+    <script>
+      $("#submit-form").submit((e)=>{
+          e.preventDefault()
+          $.ajax({
+              url:"https://script.google.com/macros/s/AKfycbxjDv6iHufm03OFqZXWisP6r_gBMZWltpD8V6xTsf7pEJL-hc5URxNzftDW32vU-La18A/exec",
+              data:$("#submit-form").serialize(),
+              method:"post",
+              success:function (response){
+                  alert("Form submitted successfully")
+                  window.location.reload()
+                  //window.location.href="https://google.com"
+              },
+              error:function (err){
+                  alert("Something Error")
+  
+              }
+          })
+      })
+  </script>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/63e217713d.js" crossorigin="anonymous"></script>
